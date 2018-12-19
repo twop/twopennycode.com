@@ -1,0 +1,9 @@
+{
+  "rulesDirectory": ["tslint-plugin-prettier"],
+  "extends": ["tslint-config-blvd/react", "tslint-config-prettier"],
+  "rules": {
+    // "prettier": true,
+    "max-line-length": [true, 80],
+    "prefer-function-over-method": true
+  }
+}
