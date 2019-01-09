@@ -10,6 +10,7 @@
   "license": "MIT",
   "main": "n/a",
   "scripts": {
+    "now-build": "npm run build",
     "build": "gatsby build",
     "clean": "rimraf public",
     "deploy": "gatsby build --prefix-paths && gh-pages -d public",
