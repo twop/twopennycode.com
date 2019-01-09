@@ -5,14 +5,14 @@ export const colors = {
   lilac: '#6eeb83',
   accent: '#f18f01',
   success: '#37b635',
-  warning: '#ec1818',
+  code: '#dd2828',
+  // code: '#dd2828',
   links: '#aa6a3e',
   ui: {
     bright: '#e0d6eb',
     light: '#f5f3f7',
     whisper: '#fbfafc'
   },
-  code: '#fcf6f0',
   gray: {
     dark: 'hsla(270, 17.119554496%, 0%, 0.92)',
     copy: 'hsla(270, 15.797828016000002%, 0%, 0.88)',

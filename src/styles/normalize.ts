@@ -142,6 +142,10 @@ export const globalStyles = css`
     margin-bottom: 0.5rem;
   }
 
+  code {
+    color: ${colors.code};
+  }
+
   .gatsby-highlight {
     background-color: ${colors.brand};
     border-radius: 20px;
