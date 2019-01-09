@@ -123,7 +123,7 @@ const findElement = (list: List<number>, pred: (num: number) => boolean) =>
 
 The operation function looks a little bit more involved, but conceptually it is pretty simple: it is a switch between "found it!" and "not yet" states. Once we found a value we cannot "unfind" it back.
 
-Note that we lost early termination for `findElement`! But we did get a lot of code reuse in the process :)
+Note that we lost early termination for `findElement`. But we did get a lot of code reuse in the process :)
 
 Let's give `doStuff` function a proper name and implement it via recursion
 
@@ -137,7 +137,7 @@ const reduce = <T, R>(l: List<T>, op: (r: R, v: T) => R, initVal: R): R =>
 
 Note that this form iterates in the right order: oldest to newest. Exactly what we wanted and we are not mutating anything in the process!
 
-### Now we have a superpower
+### We have a superpower
 
 It appears that reduce is a general abstraction over iteration. You can probably think about it as a `for` loop but without unnecessary ceremony.
 
@@ -148,7 +148,7 @@ Now, let's try to feel the power and build `map` and `filter` functions. But fir
 const append = <T>(l: List<T>, val: T): List<T> => ({ val, prev: l })
 ```
 
-operator for `filter` is pretty straightforward: "if I like you then welcome aboard, please next otherwise".
+operator for `filter` is pretty straightforward: "if I like then you welcome aboard, please next otherwise".
 
 ```ts
 // filter out elements that don't satisfy the predicate
@@ -193,11 +193,11 @@ const pairwise = <T>(list: List<T>): PairwiseRes<T> =>
   reduce(list, pairOperator, { pairs: Empty, left: Empty })
 ```
 
-Again, when we have a recipe what to do with elements one by one, actually applying to the list is super easy.
+Again, when we have a recipe what to do with elements one by one, actually applying it to the list is super easy.
 
 ### Wait, `Array` also has a `reduce` function!
 
-The best part is that all our operators would just work with Array too (and with all other collections that support reduce)!
+The best part is that all our operators would just work with Array too (and with all other collections that support reduce).
 
 ```ts
 const arr = [1, 2, 3, 4]
@@ -213,7 +213,7 @@ pairwise(arrToList(arr))
 //  left:null
 ```
 
-And of course, simply adding numbers would also work
+And addition:
 
 ```ts
 const add = (a: number, b: number) => a + b
