@@ -14,7 +14,7 @@ Now, let's dive in!
 
 ### Linked list as an example
 
-Let's start with defining immutable linked list
+Let's start with defining an immutable linked list
 
 ```ts
 const Empty = null // give null precise meaning
@@ -28,9 +28,9 @@ type Elem<T> = { val: T; prev: Opt<Elem<T>> }
 type List<T> = Opt<Elem<T>>
 ```
 
-Note that because of immutability we can only look at at the previous value, otherwise we would have to mutate the element when we grow the list.
+Note that because of immutability we can only look at at the previous value. It means that we iterate newest -> oldest
 
-### Define operations for it
+### Define operations on it
 
 Let's try to implement `sum` and `findElement` functions:
 
@@ -51,7 +51,7 @@ const sum = (list: List<number>): number => {
 }
 ```
 
-`findElement` returns either a first (actually last because of traversal order) element that satisfies the predicate or `Empty`
+`findElement` returns either the first element that satisfies the predicate or `Empty`
 
 ```ts
 const findElement = (
@@ -73,8 +73,8 @@ const findElement = (
 }
 ```
 
-Look similar, right?
-Let's try to extract common parts into a separate function and name it `doStuff`
+Looks similar, right?
+Let's try to extract the common parts into a separate function and name it `doStuff`
 
 ```ts
 const doStuff = <R>(
@@ -94,7 +94,7 @@ const doStuff = <R>(
 }
 ```
 
-Express `sum` and `findElement` with our new function.
+Express `sum` and `findElement` via our new function.
 
 ```ts
 //iterate over the list and perform (+) operation starting from 0
@@ -123,7 +123,7 @@ const findElement = (list: List<number>, pred: (num: number) => boolean) =>
 
 The operation function looks a little bit more involved, but conceptually it is pretty simple: it is a switch between "found it!" and "not yet" states. Once we found a value we cannot "unfind" it back.
 
-Note that we lost early termination for `findElement`. But we did get a lot of code reuse in the process :)
+Note that we lost early termination of `findElement`. But we did get a lot of code reuse in the process :)
 
 Let's give `doStuff` function a proper name and implement it via recursion
 
@@ -137,9 +137,9 @@ const reduce = <T, R>(l: List<T>, op: (r: R, v: T) => R, initVal: R): R =>
 
 Note that this form iterates in the right order: oldest to newest. Exactly what we wanted and we are not mutating anything in the process!
 
-### We have a superpower
+### We have the superpower
 
-It appears that reduce is a general abstraction over iteration. You can probably think about it as a `for` loop but without unnecessary ceremony.
+It appears that reduce is a general abstraction over iteration. You can probably think about it as a `for` loop but without any unnecessary ceremony.
 
 Now, let's try to feel the power and build `map` and `filter` functions. But first we need a way to actually grow lists.
 
@@ -148,7 +148,7 @@ Now, let's try to feel the power and build `map` and `filter` functions. But fir
 const append = <T>(l: List<T>, val: T): List<T> => ({ val, prev: l })
 ```
 
-operator for `filter` is pretty straightforward: "if I like then you welcome aboard, please next otherwise".
+operator for `filter` is pretty straightforward: "if I like you then welcome aboard, please next otherwise".
 
 ```ts
 // filter out elements that don't satisfy the predicate
