@@ -1,5 +1,7 @@
 import * as React from 'react'
 import { Link, graphql } from 'gatsby'
+
+require('prismjs/themes/prism-tomorrow.css')
 // import Helmet from 'react-helmet'
 
 import { Page } from '../components/Page'
@@ -10,19 +12,19 @@ import { margins } from '../styles/variables'
 import styled from '@emotion/styled'
 import { SubTitle } from '../components/SubTitle'
 
-const IndexPage = () => (
-  <IndexLayout>
-    <Page>
-      <Container>
-        <Bio />
-        <h1>Hi people</h1>
-        <p>Welcome to your new Gatsby site.</p>
-        <p>Now go build something great.</p>
-        <Link to="/page-2/">Go to page 2</Link>
-      </Container>
-    </Page>
-  </IndexLayout>
-)
+// const IndexPage = () => (
+//   <IndexLayout>
+//     <Page>
+//       <Container>
+//         <Bio />
+//         <h1>Hi people</h1>
+//         <p>Welcome to your new Gatsby site.</p>
+//         <p>Now go build something great.</p>
+//         <Link to="/page-2/">Go to page 2</Link>
+//       </Container>
+//     </Page>
+//   </IndexLayout>
+// )
 
 interface BlogIndexProps {
   data: {
