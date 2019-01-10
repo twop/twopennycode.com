@@ -1,5 +1,6 @@
 {
   "version": 2,
+  "alias": ["twopennycode.com"],
   "name": "twopennycode.com",
   "builds": [
     {
