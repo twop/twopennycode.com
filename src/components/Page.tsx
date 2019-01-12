@@ -15,4 +15,6 @@ interface PageProps {
   className?: string
 }
 
-export const Page: React.SFC<PageProps> = ({ children, className }) => <StyledPage className={className}>{children}</StyledPage>
+export const Page: React.SFC<PageProps> = ({ children, className }) => (
+  <StyledPage className={className}>{children}</StyledPage>
+)

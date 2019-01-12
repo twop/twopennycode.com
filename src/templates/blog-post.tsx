@@ -1,6 +1,12 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 
+import { Page } from '../components/Page'
+import { Container } from '../components/Container'
+import IndexLayout from '../layouts'
+import { margins } from '../styles/variables'
+import { SubTitle } from '../components/SubTitle'
+
 import Bio from '../components/Bio'
 
 interface PostTemplateProps {
@@ -117,11 +123,5 @@ export const query = graphql`
     }
   }
 `
-
-import { Page } from '../components/Page'
-import { Container } from '../components/Container'
-import IndexLayout from '../layouts'
-import { margins } from '../styles/variables'
-import { SubTitle } from '../components/SubTitle'
 
 export default BlogPostTemplate
