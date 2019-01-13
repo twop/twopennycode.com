@@ -1,8 +1,12 @@
 import * as React from 'react'
 import { Link, graphql } from 'gatsby'
 
-require('prismjs/themes/prism-tomorrow.css')
+// require('prismjs/themes/prism-tomorrow.css')
 // import Helmet from 'react-helmet'
+
+import 'prismjs/themes/prism-tomorrow.css'
+
+// import 'prism-themes/themes/prism-atom-dark.css'
 
 import { Page } from '../components/Page'
 import { Container } from '../components/Container'

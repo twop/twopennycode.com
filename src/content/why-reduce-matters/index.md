@@ -6,7 +6,7 @@ date: 2018-12-11
 
 ### Intro
 
-In a world where "Redux", "reducers" are the words we hear often enough (even `Array` has a `reduce` method!), I feel there is a need to step back and talk about general concepts behind them.
+When I started to learn "Redux" I was very confused what "reducer" actually meant. I knew that there is an `Array` method called `reduce` that accepts a function with a similar signature. In this post I will try to step back and talk about what I discovered in the process.
 
 Disclaimer: I'm not an expert in Functional Programming, so whatever I say is just my attempt to digest it myself.
 
@@ -16,7 +16,7 @@ Now, let's dive in!
 
 Let's start with defining an immutable linked list
 
-```ts
+```typescript
 const Empty = null // give null precise meaning
 type Opt<T> = T | typeof Empty // either a value or Empty
 const isEmpty = <T>(v: Opt<T>): v is typeof Empty => v === Empty
@@ -195,9 +195,9 @@ const pairwise = <T>(list: List<T>): PairwiseRes<T> =>
 
 Again, when we have a recipe what to do with elements one by one, actually applying it to the list is super easy.
 
-### Wait, `Array` also has a `reduce` function!
+### What about `Array.prototype.reduce`'?
 
-The best part is that all our operators would just work with Array too (and with all other collections that support reduce).
+The best part is that all our operators would just work with Array too (and with all other collections that support `reduce`).
 
 ```ts
 const arr = [1, 2, 3, 4]
@@ -230,16 +230,23 @@ arr.reduce(add, 0) // 10
 I hope, that next time you would use `arr.reduce` you would feel a little bit more power attached to it!
 
 P.S.
-[redux](https://redux.js.org/) is a form of reduce pattern. You can think about actions as a collection of events happening overtime.
 
-P.S.S.
-Our `reduce` implementation is not a tail recursion, which means that you cannot replace it with just a while loop (bad for performance). In practice, you iterate newest -> oldest, but before/after you reverse the list back.
-with
+- [redux](https://redux.js.org/) is a form of reduce pattern. You can think about actions as a collection of events happening overtime.
 
-```ts
-const reverse = <T>(l: List<T>): List<T> =>
-  isEmpty(l) ? l : { val: l.val, prev: reverse(l.prev) }
-```
+- Our `reduce` implementation is not a tail recursion, which means that you cannot replace it with just a while loop (bad for performance). In practice, you iterate newest -> oldest, but before/after you reverse the list back.
+  with
+
+  ```ts
+  const reverse = <T>(l: List<T>): List<T> =>
+    isEmpty(l) ? l : { val: l.val, prev: reverse(l.prev) }
+  ```
+
+- `arrToList` implementation
+
+  ```ts
+  const arrToList = <T>(arr: T[]) =>
+    arr.reduce((l: List<T>, el) => append(l, el), Empty)
+  ```
 
 You can find code snippets used for this post [here](https://github.com/twop/twopennycode.com/blob/master/src/content/why-reduce-matters/reduce-code.ts)
 
