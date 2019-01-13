@@ -4,7 +4,7 @@ import { Link, graphql } from 'gatsby'
 // require('prismjs/themes/prism-tomorrow.css')
 // import Helmet from 'react-helmet'
 
-import 'prismjs/themes/prism-tomorrow.css'
+// import 'prismjs/themes/prism-tomorrow.css'
 
 // import 'prism-themes/themes/prism-atom-dark.css'
 
