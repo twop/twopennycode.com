@@ -6,7 +6,7 @@ date: 2018-12-11
 
 ### Intro
 
-When I started to learn "Redux" I was very confused what "reducer" actually meant. I knew that there is an `Array` method called `reduce` that accepts a function with a similar signature, but not much else. In this post I will try to share what I discovered.
+When I started to learn "Redux" I was very confused with what "reducer" actually meant. I knew that there is an `Array` method called `reduce` that accepts a function with a similar signature, but not much else. In this post I will try to share what I discovered.
 
 Disclaimer: I'm not an expert in Functional Programming, so whatever I say is just my attempt to digest it myself.
 
