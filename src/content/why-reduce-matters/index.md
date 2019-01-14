@@ -6,7 +6,7 @@ date: 2018-12-11
 
 ### Intro
 
-When I started to learn "Redux" I was very confused what "reducer" actually meant. I knew that there is an `Array` method called `reduce` that accepts a function with a similar signature. In this post I will try to step back and talk about what I discovered in the process.
+When I started to learn "Redux" I was very confused what "reducer" actually meant. I knew that there is an `Array` method called `reduce` that accepts a function with a similar signature, but not much else. In this post I will try to share what I discovered.
 
 Disclaimer: I'm not an expert in Functional Programming, so whatever I say is just my attempt to digest it myself.
 
@@ -58,7 +58,7 @@ const findElement = (
   list: List<number>,
   pred: (v: number) => boolean
 ): Opt<number> => {
-  let res: Opt<T> = Empty // initial value
+  let res: Opt<number> = Empty // initial value
 
   // iteration
   let el = list
@@ -227,14 +227,13 @@ arr.reduce(add, 0) // 10
 
 ### Summary
 
-I hope, that next time you would use `arr.reduce` you would feel a little bit more power attached to it!
+I hope, that next time you would write a "reducer" or simply use `arr.reduce` you would appreciate this superpower a little bit more.
 
 P.S.
 
-- [redux](https://redux.js.org/) is a form of reduce pattern. You can think about actions as a collection of events happening overtime.
+- [redux](https://redux.js.org/) is a form of this pattern. You can think about actions as a collection of events happening overtime, where "reducer" itself is an operator.
 
-- Our `reduce` implementation is not a tail recursion, which means that you cannot replace it with just a while loop (bad for performance). In practice, you iterate newest -> oldest, but before/after you reverse the list back.
-  with
+- Our `reduce` implementation is not a tail recursion, which means that you cannot replace it with just a `while` loop (bad for performance). In practice, you iterate newest -> oldest, but before/after you reverse the list back with something like:
 
   ```ts
   const reverse = <T>(l: List<T>): List<T> =>
@@ -247,6 +246,8 @@ P.S.
   const arrToList = <T>(arr: T[]) =>
     arr.reduce((l: List<T>, el) => append(l, el), Empty)
   ```
+
+- Another common term for `reduce` is `fold`.
 
 You can find code snippets used for this post [here](https://github.com/twop/twopennycode.com/blob/master/src/content/why-reduce-matters/reduce-code.ts)
 
